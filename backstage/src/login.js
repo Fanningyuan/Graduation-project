@@ -13,7 +13,6 @@ router.post('/',(req,res)=>{
     }
     let data = '';
     req.on('data',(chunk)=>{
-        console.log('1111111',chunk);
         data += chunk;
     });
     req.on('end',()=>{
@@ -22,7 +21,6 @@ router.post('/',(req,res)=>{
             data[i]=data[i].split('=');
             user[data[i][0]] = data[i][0];
         }
-        console.log(user);
         connection.query(sql,(err,res)=>{
             if(err){
                 console.log(err.message);
