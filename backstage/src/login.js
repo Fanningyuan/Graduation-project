@@ -1,47 +1,38 @@
 const express = require('express');
 const connection = require('./connect/index');
-const router = express.Router();
+const bodyParser = require('body-parser');
+const app = express();
 
-var isLogin = false;
+
 var sql = 'SELECT * FROM user'
 var db = '';
-
-router.post('/',(req,res)=>{
-    let user = {
-        userName:'',
-        passWord:''
-    }
-    let data = '';
-    req.on('data',(chunk)=>{
-        data += chunk;
-    });
-    req.on('end',()=>{
-        data = data.split('&');
-        for(let i = 0;i < data.length;i++){
-            data[i]=data[i].split('=');
-            user[data[i][0]] = data[i][0];
+app.use(bodyParser.urlencoded({extended:false}))
+app.post('/',(req,res)=>{
+    var isLogin = false;
+    connection.query(sql,(err,results)=>{
+        if(err){
+            console.log(err.message);
+            return;
         }
-        connection.query(sql,(err,res)=>{
-            if(err){
-                console.log(err.message);
-                return;
-            }
-            console.log(res);
-            for(let i = 0;i<res.length;i++){
-                if(res[i].user_name === user.userName && res[i].pass_word === user.passWord){
-                    isLogin = true;
-                    break;
-                }
-            }
-            if(!isLogin){
-                db = { state: 200, message: '登陆失败', content: isLogin }
-            }else{
-                db = { state: 200, message: '登陆成功', content: isLogin };
-            }
+        console.log(req.body.username);
+        console.log(req.body.password);
+        for(let i = 0;i<results.length;i++){
             
-        })
-        res.json(db);
+            if(results[i].user_name == req.body.username && results[i].pass_word == req.body.password){
+                isLogin = true;
+                console.log(results[i].user_name);
+                console.log(results[i].pass_word);
+                console.log(isLogin);
+                break;
+            }
+        }
+        if(!isLogin){
+            db = { state: 200, message: '登陆失败', content: isLogin }
+        }else{
+            db = { state: 200, message: '登陆成功', content: isLogin };
+        }
+        res.send(db); 
     })
     
 })
-module.exports = router;
+module.exports = app;
