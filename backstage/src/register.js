@@ -1,42 +1,37 @@
 const express = require('express');
 const connection = require('./connect/index');
-const router = express.Router();
+const app = express();
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended:false}))
+
+
 
 var selsql = 'SELECT * FROM user';
 var isregister = false;
 var db = '';
 
-router.post('/register',(req,res)=>{
-    let data = '';
-    req.on('data',(chunk)=>{
-        data += chunk;
-    });
-    req.on('end',()=>{
-        data = JSON.parse(data);
-        var arr = [];
-        for(let i in data){
-            arr.push(data[i])
+app.post('/',(req,res)=>{
+    connection.query(selsql,(err,results)=>{
+        if(err){
+            console.log(err.message);
+            return;
         }
-        connection.query(selsql,(err,results)=>{
-            if(err){
-                console.log(err.message);
-                return;
+        isregister = true;
+        for(let i =0;i<results.length;i++){
+            if(results[i].user_name === req.body.username){
+                isregister = false;
+                break;
             }
-            isregister = true;
-            for(let i =0;i<results.rows.length;i++){
-                if(results.rows[i].user_name === data.username){
-                    isregister = false;
-                    break;
-                }
-            }
-            if(isregister){
-                db = {state: 200, message: '注册成功', content: isregister };
-                connection.query('insert into user(user_name,password) values($1,$2)',arr) 
-                res.send(db);
-            }else{
-                db = { state: 200, message: '注册失败', content: isregister }; 
-                res.send(db);
-            }
-        })
+        }
+        if(isregister){
+            db = {state: 200, message: '注册成功', content: isregister };
+            console.log(req.body.username)
+            connection.query("INSERT INTO user(user_name,pass_word,is_vip) values('"+req.body.username+"','"+req.body.password+"','0')") 
+            res.send(db);
+        }else{
+            db = { state: 200, message: '注册失败', content: isregister }; 
+            res.send(db);
+        }
     })
 })
+module.exports = app;
