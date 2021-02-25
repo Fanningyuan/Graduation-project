@@ -1,15 +1,15 @@
 <template>
     <div style="margin-top:60px">
         <img style="width:250px" src=".././assets/0.jpg"><br/>
-        <input type="text1" placeholder="请输入用户名"/><br>
-        <input type="text1" placeholder="请输入密码"/><br>
-        <input type="text1" placeholder="请再输入一次密码"/><br>
+        <input type="text" placeholder="请输入用户名"/><br>
+        <input type="password" placeholder="请输入密码"/><br>
+        <input type="password" placeholder="请再输入一次密码"/><br>
         <button>注册</button>
     </div>
 </template>
 
 <style>
-    input[type=text1] {
+    input {
         width: 340px;
         padding: 0 25px;
         height: 44px;
