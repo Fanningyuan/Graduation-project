@@ -11,7 +11,7 @@
             <router-link to="login"><a2>退出登录</a2></router-link>
         </div>
         <div class="two">
-            <p>首页</p>
+            <p>最新歌单</p>
         </div>
         <div class="three">
 

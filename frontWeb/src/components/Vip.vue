@@ -11,7 +11,7 @@
             <router-link to="login"><a2>退出登录</a2></router-link>
         </div>
         <div class="two">
-            <p>首页</p>
+            <p>VIP</p>
         </div>
         <div class="three">
 
@@ -53,9 +53,9 @@
         width:80px;
         height:80px;    
         float:left;
+        font-size:14px;
         line-height:80px;
         text-align:center;
-        font-size:14px;
     }
     .one{
         width:100%;

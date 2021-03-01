@@ -60,10 +60,12 @@
         line-height: 48px;
         border-radius: 15px;
         margin-top:25px;
+        margin-left:540px;
     }
     img{
         width:250px;
         height:250px;
+        margin-left:600px;
         border-radius: 60px;
         overflow:hidden;
     }
@@ -71,7 +73,7 @@
         width:65px;
         height:30px;
         margin-top:50px;
-        margin-left:-30px;
+        margin-left:660px;
     }
     a{
         text-decoration: none;

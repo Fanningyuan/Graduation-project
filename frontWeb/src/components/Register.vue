@@ -20,17 +20,20 @@
         line-height: 48px;
         border-radius: 15px;
         margin-top:18px;
+        margin-left:540px;
     }
     img{
         width:250px;
         height:250px;
         border-radius: 60px;
         overflow:hidden;
+        margin-left:600px;
     }
     button{
         width:75px;
         height:40px;
         border-radius: 5px;
         margin-top:30px;
+        margin-left:680px;
     }
 </style>
