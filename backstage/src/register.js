@@ -18,7 +18,7 @@ app.post('/',(req,res)=>{
         }
         isregister = true;
         for(let i =0;i<results.length;i++){
-            if(results[i].user_name === req.body.username){
+            if(results[i].id === req.body.phone){
                 isregister = false;
                 break;
             }
@@ -26,10 +26,10 @@ app.post('/',(req,res)=>{
         if(isregister){
             db = {state: 200, message: '注册成功', content: isregister };
             console.log(req.body.username)
-            connection.query("INSERT INTO user(user_name,pass_word,is_vip) values('"+req.body.username+"','"+req.body.password+"','0')") 
+            connection.query("INSERT INTO user(user_name,pass_word,is_vip) values('"+req.body.username+"','"+req.body.password+"','0')")
             res.send(db);
         }else{
-            db = { state: 200, message: '注册失败', content: isregister }; 
+            db = { state: 200, message: '注册失败', content: isregister };
             res.send(db);
         }
     })

@@ -16,7 +16,7 @@ app.post('/',(req,res)=>{
             return;
         }
         for(let i = 0;i<results.length;i++){
-            if(results[i].user_name == req.body.username && results[i].pass_word == req.body.password){
+            if(results[i].id == req.body.phone && results[i].pass_word == req.body.password){
                 isLogin = true;
                 id = results[i].id;
                 break;
@@ -27,8 +27,8 @@ app.post('/',(req,res)=>{
         }else{
             db = { state: 200, message: '登陆成功', content: isLogin, id: id };
         }
-        res.send(db); 
+        res.send(db);
     })
-    
+
 })
 module.exports = app;

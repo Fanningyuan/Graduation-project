@@ -12,15 +12,7 @@ app.post('/', (req, res) => {
         console.log(err.message)
     }
     let readerStream = fs.createReadStream(''+results[0].m_dirname);
-    if(results[0].m_vip !== 1){
-        readerStream.pipe(res)
-    }else if(results[0].m_vip === 1 && req.body.isvip === '1'){
-        readerStream.pipe(res)
-    }else {
-        res.send({message:'没有播放权限',state:403})
-    }
-
-
+    readerStream.pipe(res)
   })
 });
 module.exports = app;
