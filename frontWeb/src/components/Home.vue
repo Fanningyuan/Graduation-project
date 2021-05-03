@@ -10,7 +10,6 @@
             <a1>username</a1>   
             <router-link to="login"><a2>退出登录</a2></router-link>
         </div>
-        <audio src="127.0.0.1:80/mplay" />
         <div class="two">
             <el-carousel :interval="4000" type="card" height="180px">
                 <el-carousel-item v-for="(img, item) in imgArray" key="item">
@@ -42,9 +41,9 @@
             </div>
         </div>
         <div class="three">
-            <div>
-                
-            </div>
+            
+            <audio :src="currentSrc" autoplay="" controls="" @ended="nextSong">
+            </audio>
         </div>
     </div>
 </template>
@@ -71,7 +70,6 @@
         },
     }
 </script>
-
 
 <style>
     a{

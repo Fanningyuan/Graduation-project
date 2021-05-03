@@ -36,7 +36,7 @@
         width:65px;
         height:30px;
         margin-top:50px;
-        margin-left:60px;
+        margin-left:660px;
     }
     a{
         text-decoration: none;

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="one">
-            <img src=".././assets/0.jpg">
+            <img style="width:80px;height:80px;border-radius: 22px;overflow:hidden;float:left;margin-left:300px;" src=".././assets/0.jpg">
             <router-link to="/">首页</router-link>
             <router-link style="font-weight:bold" to="hot">热门歌曲</router-link>
             <router-link to="new">最新歌单</router-link>
@@ -11,7 +11,15 @@
             <router-link to="login"><a2>退出登录</a2></router-link>
         </div>
         <div class="two">
-            <p>热门</p>
+            <div style="width:180px;height:250px;margin-left:250px;float:left">
+                <p>热门音乐</p>
+            </div>
+            <div style="width:1000px;height:600px;background-color:red;float:left">
+                <div>
+                    <img style="width:100px;height:100px;float:left;" src=".././assets/sheng.jpg">
+                    <p>飙升榜</p>
+                </div>
+            </div>
         </div>
         <div class="three">
 
@@ -22,14 +30,7 @@
     
 </script>
 <style>
-    img{
-        width:80px;
-        height:80px;
-        border-radius: 22px;
-        overflow:hidden;
-        float:left;
-        margin-left:300px;
-    }
+    
     a{
         width:120px;
         height:80px;    
@@ -66,7 +67,7 @@
     }
     .two{
         width:100%;
-        height:400px;
+        height:600px;
         padding-top:100px;
     }
     .three{
