@@ -5,7 +5,7 @@
             <router-link to="/">首页</router-link>
             <router-link to="hot">热门歌曲</router-link>
             <router-link to="new">最新歌单</router-link>
-            <router-link to="vip">VIP</router-link>
+            <router-link style="font-weight:bold" to="vip">VIP</router-link>
             <router-link to="mine">我的音乐</router-link>
             <a1>username</a1>   
             <router-link to="login"><a2>退出登录</a2></router-link>
@@ -60,7 +60,7 @@
     .one{
         width:100%;
         height:80px;
-        background:red;
+        background:#dee1e6;
         position:fixed;
         top:0;
     }
@@ -72,7 +72,7 @@
     .three{
         width: 100%;
         height: 80px;
-        background: #5b6d81;
+        background: #dee1e6;
         line-height: 80px;
         text-align: center;
         position: fixed;

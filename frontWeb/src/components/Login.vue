@@ -1,52 +1,15 @@
 <template>
     <div style="margin-top:60px">
-        <img src=".././assets/0.jpg">
-        <br/>
-        <input type="text" v-model="loginForm.username" placeholder="用户名"/><br>
-        <input type="password" v-model="loginForm.password" placeholder="密码"/><br>
-        <button @click="login">登录</button>
-        <router-link style="margin-left:20px" to="register">注册</router-link><br>
+        <img style="width:250px" src=".././assets/0.jpg"><br/>
+        <input type="text" placeholder="请输入用户名"/><br>
+        <input type="password" placeholder="请输入密码"/><br>
+        <button>登录</button>
+        <router-link to="register" style="margin-left:20px">注册</router-link>
     </div>
 </template>
-
-<script type="text/javascript">
-    export default {
-        data() {
-            return{
-                loginForm: {
-                    username: '',
-                    password: ''
-                }
-            }
-        },
-        methods:{
-            login(){
-                let _this = this;
-                if (this.loginForm.username === '' || this.loginForm.password === '') {
-                    alert('账号或密码不能为空');
-                } else {
-                    this.axios({
-                        method: 'post',
-                        url: 'http://127.0.0.1/login',
-                        data: _this.loginForm
-                    }).then(res => {
-                        console.log(res.data);
-                        _this.userToken = 'Bearer ' + res.data.data.body.token;
-                        _this.changeLogin({ Authorization: _this.userToken });
-                        _this.$router.push('/home');
-                        alert('登陆成功');
-                    }).catch(error => {
-                        alert('账号或密码错误');
-                        console.log(error);
-                    });
-                } 
-            }
-        }
-
-    }
+ 
 
 
-</script>
 
 <style>
     input{
@@ -73,7 +36,7 @@
         width:65px;
         height:30px;
         margin-top:50px;
-        margin-left:660px;
+        margin-left:60px;
     }
     a{
         text-decoration: none;
