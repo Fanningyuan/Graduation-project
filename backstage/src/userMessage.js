@@ -11,11 +11,11 @@ app.post('/', (req, res) => {
         console.log(err.message)
         return
     }
-    results.foreach((data) => {
-        if( data.id = req.body.userid) {
-            res.send(results)
-        }
-    })
+    for(let i=0 ; i<results.length;i++){
+      if(results[i].id = req.body.userid){
+        res.send(results[i])
+      }
+    }
   })
 });
 module.exports = app;

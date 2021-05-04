@@ -26,7 +26,7 @@ app.post('/',(req,res)=>{
         if(isregister){
             db = {state: 200, message: '注册成功', content: isregister };
             console.log(req.body.username)
-            connection.query("INSERT INTO user(user_name,pass_word,is_vip) values('"+req.body.username+"','"+req.body.password+"','0')")
+            connection.query("INSERT INTO user(user_name,pass_word,id) values('"+req.body.username+"','"+req.body.password+"','"+req.body.phone+"')")
             res.send(db);
         }else{
             db = { state: 200, message: '注册失败', content: isregister };
